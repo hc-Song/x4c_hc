@@ -305,18 +305,18 @@ class DiagCalc:
     # Get specific diagnostic variables
     @F
     def get_SST(case, **kws):
-        # if ('SST', 'ocn') not in case.vars_info:
-        # if len(case.get_comp_hstr('SST')) == 0:
-        #     vn = 'TEMP'
-        #     case.load(vn, **kws)
-        #     sst = case.ds[vn].x.da.isel(z_t=0)
-        # else:
-        #     case.load('SST', vtype='raw', **kws)
-        #     sst = case.ds['SST'].x.da
+        #if ('SST', 'ocn') not in case.vns[]:
+        if len(case.get_comp_hstr('SST')) == 0:
+            vn = 'TEMP'
+            case.load(vn, **kws)
+            sst = case.ds[vn].x.da.isel(z_t=0)
+        else:
+            case.load('SST', vtype='raw', **kws)
+            sst = case.ds['SST'].x.da
 
-        vn = 'TEMP'
-        case.load(vn, **kws)
-        sst = case.ds[vn].x.da.isel(z_t=0)
+        #vn = 'TEMP'
+        #case.load(vn, **kws)
+        #sst = case.ds[vn].x.da.isel(z_t=0)
 
         sst.attrs['units'] = '°C'
         sst.attrs['long_name'] = 'Sea Surface Temperature'
