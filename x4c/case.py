@@ -1081,9 +1081,9 @@ class Timeseries:
         '''
         adjust_month = True if self.cesm_ver == 1 else False
 
-        if comp is None: comp = self.get_vn_comp(vn)
+        if comp is None: comp,hstr = self.get_comp_hstr(vn)[0]
         grid = self.grid_dict[comp]
-        paths = self.get_paths(vn, comp=comp, timespan=timespan)
+        paths = self.get_paths(comp=comp,hstr=hstr, vn=vn , timespan=timespan)
         ds = core.open_mfdataset(paths, adjust_month=adjust_month)
 
         if slicing: ds = ds.sel(time=slice(timespan[0], timespan[1]))

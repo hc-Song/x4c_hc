@@ -650,7 +650,7 @@ class XDataArray:
                 ax.set_extent([lon_min, lon_max, lat_min, lat_max], crs=_transform)
 
             if add_gridlines:
-                gl = ax.gridlines(linestyle=gridline_style, draw_labels=gridline_labels)
+                gl = ax.gridlines(linestyle=gridline_style, draw_labels=gridline_labels, x_inline=False)
                 gl.top_labels = False
                 gl.right_labels = False
 
